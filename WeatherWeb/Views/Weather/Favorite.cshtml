@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Favorite>
+
+@{
+    ViewData["Title"] = "Favorite";
+}
+
+<h1>Favorite</h1>
+
+<partial name="_Notification" />
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Favotite List</h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Weather" asp-action="Search" class="btn btn-primary">
+                <i class="bi bi-search"></i> Go To Search
+            </a>
+        </div>
+    </div>
+</div>
+<br /><br />
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Favorite Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width="30%">
+                    @obj.CityName
+                </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Weather" asp-action="DeleteFavorite" asp-route-id="@obj.Id">
+                            <i class="btn-danger"></i>Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

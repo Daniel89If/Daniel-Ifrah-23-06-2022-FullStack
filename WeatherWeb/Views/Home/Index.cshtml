@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h2 class="display-4">Welcome To Weather Web</h2>
+</div>
+<div class="text-center" id="username">  
+    <form method="get" asp-controller="Weather" asp-action="Favorite">
+        <p>
+            <input type="search" placeholder="Enter Your Name" value="@ViewData["UserName"]" name="userName" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </p>                          
+    </form>
+</div> 

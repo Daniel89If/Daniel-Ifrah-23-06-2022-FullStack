@@ -1,0 +1,24 @@
+﻿@model City
+
+@{
+    ViewData["CityName"] = @Model.Name;
+}
+
+@if (Model != null)
+ {
+    <h2>The Temp in @Model.Name is @Model.Temperature and the Weather is @Model.WeatherText</h2>
+ }
+ <partial name="_Notification" />
+
+ <p>
+     <form method="post" asp-action="AddToFavorite">
+         <div class="col-6">
+            <button type="submit" class="btn btn-secondary">Add to My Favorites</button>
+            <input type="hidden" name="cityName" value="@Model.Name"/>
+        </div>
+    </form>
+    <br />
+     <a asp-controller="Weather" asp-action="Search" class="btn btn-secondary" style="width:150px">
+            Return to Search
+     </a>
+ </p>

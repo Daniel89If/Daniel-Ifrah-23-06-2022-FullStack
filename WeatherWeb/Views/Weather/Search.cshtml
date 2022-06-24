@@ -1,0 +1,33 @@
+﻿@model City
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Search Weather</h1>
+
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">City Weather</h2>
+            @if (Model != null)
+            {
+                <h2>The Temp in @Model.Name is @Model.Temperature</h2>
+            }
+            <hr />
+        </div>
+        <form method="get" asp-action="SearchGet">
+            <p>
+                <input type="search" placeholder="Enter City" value="@ViewData["City"]" name="city" />
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </p>                          
+        </form>
+        <br />
+        <p>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Switch User
+        </a>
+        <a asp-controller="Weather" asp-action="AddFavorite" class="btn btn-secondary" style="width:150px">
+            Go to Favorites
+        </a>
+        </p>
+    </div>
