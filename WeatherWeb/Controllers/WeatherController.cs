@@ -79,9 +79,12 @@ namespace WeatherWeb.Controllers
         //GET
         public IActionResult Favorite(string userName)
         {
-            currentUser = userName;
+            if (userName != null)
+            {
+                currentUser = userName;
+            }
 
-            IEnumerable<Favorite> objFavoriteList = _db.favorites.Where(f => f.UserName == userName);
+            IEnumerable<Favorite> objFavoriteList = _db.favorites.Where(f => f.UserName == currentUser);
             if (objFavoriteList.Any())
             {
                 return View(objFavoriteList);
