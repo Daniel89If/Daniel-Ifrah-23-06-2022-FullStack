@@ -85,12 +85,8 @@ namespace WeatherWeb.Controllers
             }
 
             IEnumerable<Favorite> objFavoriteList = _db.favorites.Where(f => f.UserName == currentUser);
-            if (objFavoriteList.Any())
-            {
-                return View(objFavoriteList);
-            }
 
-            return RedirectToAction("Search");
+            return View(objFavoriteList);
         }
 
 
